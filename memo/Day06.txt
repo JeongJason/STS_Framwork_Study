@@ -1,0 +1,9 @@
+프로젝트 기본 경로
+	1) src/main/java			: 서버단 JAVA파일
+	2) src/test/java			: 단위 테스트를 위한 JAVA파일
+	3) src/main/resources		: src/main/java관련 설정 파일
+	4) src/test/resources		: src/main/test관련 설정 파일
+	5) src/main/webapp/WEB-INF/views	: jsp, html파일 경로
+	6) pom.xml			: 라이브러리 의존성 관리
+	7) src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml : 웹과 관련된 스프링 설정 파일
+	8) src/main/webapp/WEB-INF/spring/root-context.xml		: 스프링 객체관련 파일

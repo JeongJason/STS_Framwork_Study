@@ -1,0 +1,7 @@
+DispatcherServlet이 front controller역활을 하기때문에 따로 만들어주지 않아도 된다.
+
+Front-Controller 패턴
+ 
+Request
+
+Response

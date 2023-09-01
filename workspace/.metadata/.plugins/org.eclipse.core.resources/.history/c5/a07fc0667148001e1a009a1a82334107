@@ -1,0 +1,25 @@
+package com.example.board.domain.vo;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
+import lombok.Data;
+import lombok.extern.log4j.Log4j;
+
+@Data
+@Log4j
+public class Criteria {
+	private int pageNum;
+	private int amount;
+	
+	public Criteria() {
+		this(1, 10);
+		log.info("들어옴!");
+	}
+
+	public Criteria(int pageNum, int amount) {
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
+	
+	
+}

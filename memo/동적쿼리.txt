@@ -1,0 +1,89 @@
+검색 처리
+	단일 항목
+		제목/내용/작성자
+	다중 항목
+		제목 or 내용 / 제목 or 작성자  / 내용 or 작성자 / 제목 or 내용 or 작성자
+
+MyBatis의 동적 태그
+	if
+	choose(when,otherwise)
+	where
+	trim
+	foreash
+
+
+[if]
+	- 검색 조건이 'T' : 제목이 키워드인 항목 검색
+		<if test = "type == 'T'.toString()">
+			TITLE LIKE '%'||#{keyword}||'%'
+		</if>
+[choose]
+	<choose>
+		<when test = "type == 'T'.toString()">
+			TITLE LIKE '%'||#{keyword}||'%'
+		</when>
+		<when test = "type == 'C'.toString()">
+			CONTENT LIKE '%'||#{keyword}||'%'
+		</when>
+		<when test = "type == 'W'.toString()">
+			WRITER LIKE '%'||#{keyword}||'%'
+		</when>
+		<otherwise>
+			TITLE LIKE '%'||#{keyword}||'%' OR CONTENT LIKE '%'||#{keyword}||'%' OR WRITER LIKE '%'||#{keyword}||'%'
+		</otherwise>
+	</choose>
+
+[where]
+	SELECT * FROM TBL_BOARD
+	<where>
+		<if test="bno != null">
+			BNO = #{bno}
+		</if>
+	</where>
+
+	*bno가 null일때 
+		SELECT * FROM TBL_BOARD
+	*bno가 null이 아닐 경우
+		SELECT * FROM TBL_BOARD WHERE BNO = #{bno}
+
+[trim]
+	SELECT * FROM TBL_BOARD
+	<where>
+		<if test = "content !=null">
+			CONTENT = #{content}
+		</if>
+		<trim prefixOverrides = "AND">
+			AND ROWNUM = 1
+		</trim>
+	</where>
+
+	*bno가 null일 경우
+		SELECT * FROM TBL_BOARD WHERE ROWNUM =1
+	*bno가 null이 아닐 경우
+		SELECT * FROM TBL_BOARD WHERE CONTENT = #{content} AND ROWNUM = 1
+
+
+[foreach]
+	<foreach item = "val" index = "key" collection "list">'
+	</foreach>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

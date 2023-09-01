@@ -1,0 +1,12 @@
+package com.example.board.domain.vo;
+
+import lombok.Data;
+
+@Data
+public class PageDTO {
+	int startPage;
+	int endPage;
+	int realEnd;
+	boolean prev, next;
+	
+}
