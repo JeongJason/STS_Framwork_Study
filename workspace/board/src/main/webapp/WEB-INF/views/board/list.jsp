@@ -13,8 +13,22 @@
 body {
 	transform: scale(0.8);
 }
-.small-width {display:none;}
 .big-width{display:block;}
+.small-width {display:none;}
+.table-wrapper{overflow-x: hidden;}
+
+select{
+	width:15%;
+	display:inline;
+}
+input[name='keyword']{
+	display:inline;
+	width:60%;
+}
+.search{
+	width:20%;
+}
+
 
 @media ( max-width :918px) {
 	body {
@@ -32,6 +46,16 @@ body {
 	}
 	.big-width{display:none;}
 	.small-width{display:block;}
+
+	select{
+		width:100%;
+	}
+	input[name='keyword']{
+		width:100%;
+	}
+	.search{
+		width:100%;
+	}
 }
 </style>
 </head>
@@ -73,6 +97,24 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
+					<form action="/board/list" name="searchForm">
+						<div class="fields">
+							<div class="field" style="text-align: center;">
+								<select name="type">
+									<option value="" ${pageDTO.criteria.type == null? 'selected' : ''}>검색 기준</option>
+									<option value="TCW" ${pageDTO.criteria.type == 'TCW' ? 'selected' : ''}>전체</option>
+									<option value="T" ${pageDTO.criteria.type == 'T' ? 'selected' : ''}>제목</option>
+									<option value="C" ${pageDTO.criteria.type == 'C' ? 'selected' : ''}>내용</option>
+									<option value="W" ${pageDTO.criteria.type == 'W' ? 'selected' : ''}>작성자</option>
+									<option value="TC" ${pageDTO.criteria.type == 'TC' ? 'selected' : ''}>제목+내용</option>
+									<option value="TW" ${pageDTO.criteria.type == 'TW' ? 'selected' : ''}>제목+작성자</option>
+								</select>
+								<input type="text" name="keyword" value="${pageDTO.criteria.keyword}" />
+								<input type="hidden" name="pageNum" value="${pageDTO.criteria.pageNum}" />
+								<a href="javascript:send()" class="search button primary icon solid fa-search">검색</a>
+							</div>
+						</div>
+					</form>
 					<div style="text-align: center;" class="big-width">
 						<c:if test="${pageDTO.prev}">
 							<a class="chagePage" href="${pageDTO.startPage -1}"> <code>&lt;</code>
@@ -112,8 +154,10 @@ body {
 						</c:if>
 					</div>
 					<form name="pageForm" action="/board/list">
-						<input type="hidden" name="pageNum"
-							value="${pageDTO.criteria.pageNum}" />
+						<input type="hidden" name="pageNum" value="${pageDTO.criteria.pageNum}" />
+						<input type="hidden" name="type" value="${pageDTO.criteria.type}" />
+						<input type="hidden" name="keyword" value="${pageDTO.criteria.keyword}" />
+						
 					</form>
 				</div>
 			</div>
@@ -138,5 +182,23 @@ body {
 		$form.find("input[name='pageNum']").val($(this).attr("href"));
 		$form.submit();
 	});
+
+	function send() {
+		let $form = $(document.searchForm);
+		
+		if(!$form.find("option:selected").val()){
+			alert("검색 종류를 선택하세요.");
+			return;
+		}
+		
+		if(!$form.find("input[name='keyword']").val()){
+			alert("키워드를 입력하세요.");
+			return;
+		}
+		
+		
+		
+		$form.submit();
+	}
 </script>
 </html>

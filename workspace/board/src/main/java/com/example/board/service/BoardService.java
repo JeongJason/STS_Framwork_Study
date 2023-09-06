@@ -22,6 +22,6 @@ public interface BoardService {
 	public List<BoardVO> getList(Criteria criteria);
 	
 //	전체 게시글 개수
-	public int getTotal();
+	public int getTotal(Criteria criteria);
 	
 }

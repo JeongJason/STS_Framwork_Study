@@ -49,4 +49,10 @@
 		<column name="디폴트" visible="true" order="4" width="88"/>
 		<column name="Comment" visible="true" order="5" width="93"/>
 	</item>
+	<item id="scriptSelectorViewer">
+		<column name="Script" visible="true" order="0" width="158"/>
+		<column name="Time" visible="true" order="1" width="244"/>
+		<column name="Info" visible="true" order="2" width="80"/>
+		<column name="Folder" visible="true" order="3" width="99"/>
+	</item>
 </items>

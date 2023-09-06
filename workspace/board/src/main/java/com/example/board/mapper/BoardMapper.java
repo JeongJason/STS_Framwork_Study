@@ -20,5 +20,5 @@ public interface BoardMapper {
 //	게시글 수정
 	public int update(BoardVO board);
 	
-	public int getTotal();
+	public int getTotal(Criteria criteria);
 }

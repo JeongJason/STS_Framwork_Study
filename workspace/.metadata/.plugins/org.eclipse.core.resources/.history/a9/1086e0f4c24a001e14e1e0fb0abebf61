@@ -1,0 +1,46 @@
+/**
+ * JavaScript 모듈화
+ * 
+ */
+ 
+ console.log("Reply Module....");
+ let replyService = (function(){
+ 	
+//	추가하기 	
+ 	function add(reply, callback){
+ 		console.log("add reply......");
+ 		
+ 		$.ajax({
+ 			url:"/replies/new",
+ 			type:"post",
+ 			data: JSON.stringify(reply),
+ 			contentType:"application/json; charset=utf-8",
+ 			success:function(result){
+ 				if(callback){
+ 					callback(result);
+ 				}	
+ 			}
+ 		});
+ 	}
+ 	
+ 	// 목록보기
+ 	function getList(param, callback, error){
+ 		let bno = param.bno;
+ 		let page = param.page || 1;
+ 		
+ 		$.getJSON("/replies/" + bno + "/" + page + ".json", function(list){
+ 			if(callback){
+ 				callback(list);
+ 			}
+ 		}).fail(function(xhr,status,err){
+ 		if(error){
+ 			error(err);
+ 		}
+ 		});
+ 	}
+ 		
+ 
+ 	return{add : add, getList:getList}
+ })();
+ 
+ 
