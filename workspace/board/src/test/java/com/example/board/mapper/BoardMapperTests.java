@@ -16,12 +16,12 @@ import lombok.extern.log4j.Log4j;
 public class BoardMapperTests {
 	@Autowired
 	private BoardMapper boardMapper;
-
+	
 //	@Test
 //	public void getListTest() {
 //		boardMapper.getList().forEach(log::info);
 //	}
-
+	
 //	@Test
 //	public void insertTest() {
 //		BoardVO board = new BoardVO();
@@ -33,38 +33,48 @@ public class BoardMapperTests {
 //		
 //		log.info(board);
 //	}
-
+	
 //	@Test
 //	public void readTest() {
 //		BoardVO boardVO = boardMapper.read(5L);
 //		log.info(boardVO);
 //	}
-
+	
 //	@Test
 //	public void deleteTest() {
 //		Long bno = 2L;
 //		BoardVO boardVO = boardMapper.read(bno);
-//		if(boardVO !=null) {
-//			log.info("DELECTE COUNT : " + boardMapper.delete(boardVO.getBno()));
+//		if(boardVO != null) {
+//			log.info("DELETE COUNT : " + boardMapper.delete(boardVO.getBno()));
 //			return;
 //		}
 //		log.info("NO BOARD");
 //	}
 	
-
 //	@Test
 //	public void updateTest() {
 //		BoardVO boardVO = boardMapper.read(1L);
-//		if (boardVO != null) {
-//
+//		if(boardVO != null) {
+//			
 //			boardVO.setTitle("수정된 제목");
 //			boardVO.setContent("수정된 내용");
 //			boardVO.setWriter("user00");
-//
+//			
 //			log.info("UPDATE COUNT : " + boardMapper.update(boardVO));
 //			return;
 //		}
 //		log.info("NO BOARD");
 //	}
-
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -12,17 +12,10 @@ import com.example.board.domain.vo.ReplyVO;
 public interface ReplyMapper {
 	
 	public int insert(ReplyVO replyVO);
-	
 	public ReplyVO select(Long rno);
-	
 	public int delete(Long rno);
-	
 	public int deleteAll(Long bno);
-	
 	public int update(ReplyVO replyVO);
-	
-	public List<ReplyVO> selectAll(@Param("cri")Criteria criteria, @Param("bno")Long bno);
-	
+	public List<ReplyVO> selectAll(@Param("cri") Criteria criteria, @Param("bno") Long bno);
 	public int getTotal(Long bno);
-	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.example.board.domain.vo.BoardVO;
 import com.example.board.domain.vo.Criteria;
 
 import lombok.extern.log4j.Log4j;
@@ -14,6 +15,7 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class BoardDAOTests {
+	
 	@Autowired
 	BoardDAO boardDAO;
 	
@@ -35,40 +37,33 @@ public class BoardDAOTests {
 	
 //	@Test
 //	public void getTest() {
-//		log.info(boardDAO.get(13L));
+//		log.info(boardDAO.get(24L));
 //	}
-//	
+	
 //	@Test
 //	public void modifyTest() {
-//		BoardVO boardVO = boardDAO.get(13L);
-//		
+//		BoardVO boardVO = boardDAO.get(24L);
 //		if(boardVO == null) {log.info("NO BOARD"); return;}
+//		
 //		boardVO.setTitle("수정된 게시글 제목");
 //		boardVO.setContent("수정된 게시글 내용");
 //		
 //		log.info("UPDATE : " + boardDAO.modify(boardVO));
 //	}
-	
+
 //	@Test
 //	public void removeTest() {
-//		BoardVO boardVO = boardDAO.get(13L);
-//		
+//		BoardVO boardVO = boardDAO.get(24L);
 //		if(boardVO == null) {log.info("NO BOARD"); return;}
 //		
-//		log.info("REMOVE : " + boardDAO.remove(boardVO.getBno()));
+//		log.info("DELETE : " + boardDAO.remove(boardVO.getBno()));
 //	}
 	
-@Test
-public void getListTest() {
-	boardDAO.getList(new Criteria()).forEach(log::info);
+	@Test
+	public void getListTest() {
+		boardDAO.getList(new Criteria()).forEach(log::info);
+	}
 }
-	
-	
-	
-}
-
-
-
 
 
 

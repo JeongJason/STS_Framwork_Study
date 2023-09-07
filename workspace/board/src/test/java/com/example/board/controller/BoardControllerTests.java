@@ -12,12 +12,16 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.example.board.domain.vo.Criteria;
+
 import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration({"file:src/main/webapp/WEB-INF/spring/root-context.xml",
-	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"})
+@ContextConfiguration({
+	"file:src/main/webapp/WEB-INF/spring/root-context.xml",
+	"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml"
+})
 @Log4j
 public class BoardControllerTests {
 	@Autowired
@@ -32,49 +36,61 @@ public class BoardControllerTests {
 	@Test
 	public void listTest() throws Exception{
 		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/list")
-				.param("pageNum", "1").param("amount", "10")
+				.param("pageNum", "1")
+				.param("amount", "10")
 				.param("type", "TC")
-				.param("keyword", "제목"))
+				.param("keyword", "새"))
 				.andReturn().getModelAndView().getModelMap());
 	}
 	
 //	@Test
 //	public void registerTest() throws Exception {
 //		log.info(mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
-//					.param("title", "테스트 새 글 제목")'
+//					.param("title", "테스트 새 글 제목")
 //					.param("content", "테스트 새 글 내용")
 //					.param("writer", "hgd0000")
 //				).andReturn().getFlashMap());
 //	}
 	
 //	@Test
-//	public void readTest() throws Exception{
+//	public void readTest() throws Exception {
 //		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/read")
-//				.param("bno", "15")
-//				).andReturn().getModelAndView().getModelMap());
+//				.param("bno", "26")
+//		).andReturn().getModelAndView().getModelMap());
 //	}
 	
 //	@Test
 //	public void removeTest() throws Exception {
 //		log.info(mockMvc.perform(MockMvcRequestBuilders.get("/board/remove")
-//				.param("bno", "11")
+//				.param("bno", "26")
 //		).andReturn().getFlashMap());
 //	}
 	
 //	@Test
-//	public void modifyTest() throws Exception {
+//	public void modiyTest() throws Exception {
 //		log.info(mockMvc.perform(MockMvcRequestBuilders.post("/board/modify")
 //				.param("bno", "1")
 //				.param("title", "수정한 게시글 제목")
 //				.param("content", "수정한 게시글 내용")
 //				.param("writer", "bugbugcoding")
-//				).andReturn().getFlashMap());
+//		).andReturn().getFlashMap());
 //	}
 	
 //	@Test
-//	public void goModifyTest() throws Exception{
-//		mockMvc.perform(MockMvcRequestBuilders.get("/board/modify").param("bno", "10"));
+//	public void goModifyTest() throws Exception {
+//		mockMvc.perform(MockMvcRequestBuilders.get("/board/modify").param("bno", "21"));
 //	}
-	
-	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

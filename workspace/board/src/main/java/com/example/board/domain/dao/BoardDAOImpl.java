@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.example.board.domain.vo.BoardDTO;
 import com.example.board.domain.vo.BoardVO;
 import com.example.board.domain.vo.Criteria;
+import com.example.board.domain.vo.FileVO;
 import com.example.board.mapper.BoardMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -18,7 +20,7 @@ public class BoardDAOImpl implements BoardDAO {
 	BoardMapper boardMapper;
 	
 	@Override
-	public void register(BoardVO board) {
+	public void register(BoardDTO board) {
 		boardMapper.insert(board);
 	}
 
@@ -41,10 +43,14 @@ public class BoardDAOImpl implements BoardDAO {
 	public List<BoardVO> getList(Criteria criteria) {
 		return boardMapper.getList(criteria);
 	}
-	
+
 	@Override
 	public int getTotal(Criteria criteria) {
 		return boardMapper.getTotal(criteria);
 	}
-
+	
+	@Override
+	public List<FileVO> getFiles(Long bno) {
+		return boardMapper.getFiles(bno);
+	}
 }

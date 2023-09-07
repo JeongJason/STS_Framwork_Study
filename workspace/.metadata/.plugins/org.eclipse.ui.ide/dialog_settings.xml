@@ -109,6 +109,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\jewon\Downloads\STS_Framwork_Study-main\STS_Framwork_Study-main\workspace\board"/>
 			<item value="C:\Srpingframework\workspace\board"/>
 			<item value="C:\Users\jewon\Downloads\day_01~06\ex00"/>
 		</list>
@@ -120,6 +121,8 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\jewon\Downloads\part4_11강~20강\board"/>
+			<item value="C:\Users\jewon\Downloads\STS_Framwork_Study-main\STS_Framwork_Study-main\workspace\board"/>
 			<item value="C:\Users\jewon\Downloads\배워서 바로 써먹는 Spring Framework1\day_07~12\ex01"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">

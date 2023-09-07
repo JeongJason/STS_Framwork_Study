@@ -1,14 +1,10 @@
 package com.example.board.domain.vo;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.Data;
-import lombok.extern.log4j.Log4j;
 
 @Data
-@Log4j
 public class Criteria {
 	private int pageNum;
 	private int amount;
@@ -17,7 +13,6 @@ public class Criteria {
 	
 	public Criteria() {
 		this(1, 10);
-		log.info("들어옴!");
 	}
 
 	public Criteria(int pageNum, int amount) {
@@ -41,19 +36,7 @@ public class Criteria {
 	}
 	
 	public String[] getTypes() {
-//		""ABC . split("") --> 3칸 배열 ([A][B][C])
+		//"ABC".split("") --> 3칸 배열([A][B][C])
 		return type == null ? new String[] {} : type.split("");
 	}
-
 }
-
-
-
-
-
-
-
-
-
-
-

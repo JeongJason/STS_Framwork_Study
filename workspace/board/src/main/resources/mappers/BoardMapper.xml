@@ -25,58 +25,57 @@
 	</sql>
 
 	<select id="getList" resultType="boardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
-		FROM
-		(
-		SELECT /*+
-		INDEX_DESC(TBL_BOARD, SYS_C007001)*/
-		ROWNUM RN, BNO, TITLE, CONTENT,
-		WRITER, REGDATE, UPDATEDATE
-		FROM TBL_BOARD WHERE
-		<include refid="search" />
+			SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+			FROM
+			(
+				SELECT /*+ INDEX_DESC(TBL_BOARD, SYS_C007006)*/ 
+				ROWNUM RN, BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE 
+				FROM TBL_BOARD WHERE 
+			<include refid="search"/>
 			<![CDATA[	
 				ROWNUM <= #{pageNum} * #{amount}
 			]]>
-		)
+			)
 		<![CDATA[
 			WHERE RN  > (#{pageNum} - 1) * #{amount}
 		]]>
 	</select>
-
+	
 	<insert id="insert">
-		<selectKey keyProperty="bno" order="BEFORE"
-			resultType="long">
+		<selectKey keyProperty="bno" order="BEFORE" resultType="long">
 			SELECT SEQ_BOARD.NEXTVAL FROM DUAL
 		</selectKey>
 		INSERT INTO TBL_BOARD (BNO, TITLE, CONTENT, WRITER)
-		VALUES(#{bno},
-		#{title}, #{content}, #{writer})
+		VALUES(#{bno}, #{title}, #{content}, #{writer})
 	</insert>
-
+	
 	<select id="read" resultType="boardVO">
-		SELECT BNO, TITLE, CONTENT, WRITER,
-		REGDATE, UPDATEDATE
+		SELECT BNO, TITLE, CONTENT, WRITER, REGDATE, UPDATEDATE
 		FROM TBL_BOARD WHERE BNO = #{bno}
 	</select>
-
+	
 	<delete id="delete">
 		DELETE FROM TBL_BOARD WHERE BNO = #{bno}
 	</delete>
-
+	
 	<update id="update">
 		UPDATE TBL_BOARD
-		SET TITLE = #{title}, CONTENT =
-		#{content}, WRITER = #{writer}, UPDATEDATE = SYSDATE
+		SET TITLE = #{title}, CONTENT = #{content}, WRITER = #{writer}, UPDATEDATE = SYSDATE
 		WHERE BNO = #{bno}
 	</update>
-
+	
 	<select id="getTotal" resultType="_int">
 		SELECT COUNT(BNO) FROM TBL_BOARD
 		<where>
 			<trim suffixOverrides="AND">
-				<include refid="search" />
+				<include refid="search"/>
 			</trim>
 		</where>
+	</select>
+	
+	<select id="getFiles" resultType="fileVO">
+		SELECT UUID, UPLOAD_PATH, FILE_NAME, FILE_TYPE FROM TBL_FILE
+		WHERE BNO = #{bno}
 	</select>
 </mapper>
 

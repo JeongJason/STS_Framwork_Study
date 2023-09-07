@@ -13,9 +13,9 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ReplyServiceImpl implements ReplyService {
-	
-	private final ReplyDAO replyDAO;
 
+	private final ReplyDAO replyDAO;
+	
 	@Override
 	public boolean register(ReplyVO replyVO) {
 		return replyDAO.register(replyVO);
@@ -47,8 +47,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 	
 	@Override
-	public int getTotal(Long bno) {
+	public int getToal(Long bno) {
 		return replyDAO.getTotal(bno);
 	}
-
 }

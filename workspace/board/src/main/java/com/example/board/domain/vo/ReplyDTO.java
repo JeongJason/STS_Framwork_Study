@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReplyDTO {
-	
 	private List<ReplyVO> list;
 	private int total;
-	
 }

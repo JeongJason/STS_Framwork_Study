@@ -17,7 +17,7 @@ public class ReplyDAO {
 	private final ReplyMapper replyMapper;
 	
 	public boolean register(ReplyVO replyVO) {
-		return replyMapper.insert(replyVO) ==1;
+		return replyMapper.insert(replyVO) == 1;
 	}
 	
 	public ReplyVO findByRNO(Long rno) {
@@ -44,3 +44,20 @@ public class ReplyDAO {
 		return replyMapper.getTotal(bno);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
